@@ -1,0 +1,49 @@
+@import "../../variables/Variables.module.scss";
+
+.newsletter {
+  background-color: $lightpink;
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    font-size: 60px;
+  }
+
+  p {
+    font-size: 30px;
+  }
+
+  &_form {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+
+    input {
+      width: 400px;
+      height: 43px;
+      padding: 0 20px;
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      background-color: $pink;
+      height: 43px;
+      padding: 0 20px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+
+      &:hover {
+        background-color: $lightred;
+        color: white;
+      }
+    }
+  }
+}

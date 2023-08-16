@@ -1,0 +1,49 @@
+:export {
+  lightred: #ff5252;
+  red: #de0a26;
+  pink: #ffbaba;
+  lightpink: #fbf0f4;
+  grey: #555555;
+  lightblue: #edf3f5;
+}
+
+.newsletter {
+  background-color: #fbf0f4;
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.newsletter h1 {
+  font-size: 60px;
+}
+.newsletter p {
+  font-size: 30px;
+}
+.newsletter_form {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+.newsletter_form input {
+  width: 400px;
+  height: 43px;
+  padding: 0 20px;
+  border: none;
+}
+.newsletter_form input:focus {
+  outline: none;
+}
+.newsletter_form button {
+  background-color: #ffbaba;
+  height: 43px;
+  padding: 0 20px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.newsletter_form button:hover {
+  background-color: #ff5252;
+  color: white;
+}/*# sourceMappingURL=Newsletter.css.map */

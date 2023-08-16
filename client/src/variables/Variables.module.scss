@@ -1,0 +1,29 @@
+$lightred: #ff5252;
+$red: #de0a26;
+$pink: #ffbaba;
+$lightpink: #fbf0f4;
+$grey: #555555;
+$lightblue: #edf3f5;
+
+@mixin buttonStyle {
+  padding: 10px 15px;
+  background-color: $pink;
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: $lightred;
+    color: white;
+  }
+}
+:export {
+  lightred: $lightred;
+  red: $red;
+  pink: $pink;
+  lightpink: $lightpink;
+  grey: $grey;
+  lightblue: $lightblue;
+}

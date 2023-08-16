@@ -1,0 +1,28 @@
+:export {
+  lightred: #ff5252;
+  red: #de0a26;
+  pink: #ffbaba;
+  lightpink: #fbf0f4;
+  grey: #555555;
+  lightblue: #edf3f5;
+}
+
+.product-list {
+  padding: 50px 70px 0;
+}
+.product-list h1 {
+  margin-bottom: 20px;
+}
+.product-list_optimize {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-list_optimize > * {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.product-list_optimize select {
+  padding: 3px 8px;
+}/*# sourceMappingURL=ProductList.css.map */

@@ -1,0 +1,17 @@
+:export {
+  lightred: #ff5252;
+  red: #de0a26;
+  pink: #ffbaba;
+  lightpink: #fbf0f4;
+  grey: #555555;
+  lightblue: #edf3f5;
+}
+
+.announcement {
+  background-color: #ffbaba;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}/*# sourceMappingURL=Announcement.css.map */

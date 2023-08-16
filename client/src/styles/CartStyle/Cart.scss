@@ -1,0 +1,118 @@
+@import "../../variables/Variables.module.scss";
+
+.cart {
+  padding: 50px 70px;
+
+  h1 {
+    text-align: center;
+  }
+
+  &_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      @include buttonStyle;
+    }
+
+    &_right {
+      display: flex;
+      gap: 30px;
+
+      p:hover {
+        cursor: pointer;
+        color: $lightred;
+      }
+    }
+  }
+
+  &_bottom {
+    padding: 50px 0;
+    display: flex;
+    gap: 60px;
+
+    &_details {
+      width: 70%;
+
+      hr {
+        margin: 15px 0;
+      }
+
+      &_item {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        justify-content: space-between;
+
+        &_left {
+          display: flex;
+          align-items: center;
+          gap: 40px;
+
+          img {
+            width: 200px;
+          }
+
+          &_info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            &_type {
+              display: flex;
+              gap: 10px;
+            }
+
+            div:nth-child(3) {
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background-color: black;
+            }
+          }
+        }
+
+        &_right {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+          &_quantity {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+            p {
+              font-size: 24px;
+              font-weight: 500;
+            }
+          }
+
+          h2 {
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    &_summary {
+      width: 30%;
+      padding: 20px;
+      border: 1px solid black;
+      border-radius: 15px;
+
+      &_item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+      }
+
+      div:nth-child(5) {
+        font-size: 25px;
+        font-weight: 600;
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+:export {
+  lightred: #ff5252;
+  red: #de0a26;
+  pink: #ffbaba;
+  lightpink: #fbf0f4;
+  grey: #555555;
+  lightblue: #edf3f5;
+}
+
+.login-register {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../../../public/assets/login.webp") center;
+  background-size: cover;
+}
+.login-register_form {
+  width: 30%;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.login-register_form input {
+  padding: 7px 15px;
+}
+.login-register_form_details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.login-register_form button {
+  width: 40%;
+  padding: 10px 15px;
+  background-color: #ffbaba;
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.login-register_form button:hover {
+  background-color: #ff5252;
+  color: white;
+}
+.login-register_form p {
+  font-size: 13px;
+  cursor: pointer;
+}
+.login-register_form p:hover {
+  text-decoration: underline;
+}/*# sourceMappingURL=LoginRegister.css.map */

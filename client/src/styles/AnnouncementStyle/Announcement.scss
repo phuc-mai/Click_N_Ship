@@ -1,0 +1,10 @@
+@import "../../variables/Variables.module.scss";
+
+.announcement {
+  background-color: $pink;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}

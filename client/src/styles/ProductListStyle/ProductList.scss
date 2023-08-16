@@ -1,0 +1,25 @@
+@import "../../variables/Variables.module.scss";
+
+.product-list {
+  padding: 50px 70px 0;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  &_optimize {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > * {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    select {
+      padding: 3px 8px;
+    }
+  }
+}
