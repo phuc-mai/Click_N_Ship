@@ -1,6 +1,6 @@
 @import "../../variables/Variables.module.scss";
 
-.login-register {
+.login {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -23,6 +23,10 @@
 
     input {
       padding: 7px 15px;
+
+      &:focus {
+        outline: none;
+      }
     }
 
     &_details {

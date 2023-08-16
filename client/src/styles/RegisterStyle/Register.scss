@@ -1,0 +1,52 @@
+@import "../../variables/Variables.module.scss";
+
+.register {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("../../../public/assets/register.jpeg") center;
+  background-size: cover;
+
+  &_form {
+    width: 30%;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    input {
+      padding: 7px 15px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &_details {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    button {
+      width: 40%;
+      @include buttonStyle
+    }
+
+    p {
+      font-size: 13px;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

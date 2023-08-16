@@ -7,7 +7,7 @@
   lightblue: #edf3f5;
 }
 
-.login-register {
+.login {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -16,7 +16,7 @@
   background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../../../public/assets/login.webp") center;
   background-size: cover;
 }
-.login-register_form {
+.login_form {
   width: 30%;
   padding: 40px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -24,15 +24,18 @@
   flex-direction: column;
   gap: 15px;
 }
-.login-register_form input {
+.login_form input {
   padding: 7px 15px;
 }
-.login-register_form_details {
+.login_form input:focus {
+  outline: none;
+}
+.login_form_details {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.login-register_form button {
+.login_form button {
   width: 40%;
   padding: 10px 15px;
   background-color: #ffbaba;
@@ -42,14 +45,14 @@
   cursor: pointer;
   transition: 0.3s ease;
 }
-.login-register_form button:hover {
+.login_form button:hover {
   background-color: #ff5252;
   color: white;
 }
-.login-register_form p {
+.login_form p {
   font-size: 13px;
   cursor: pointer;
 }
-.login-register_form p:hover {
+.login_form p:hover {
   text-decoration: underline;
-}/*# sourceMappingURL=LoginRegister.css.map */
+}/*# sourceMappingURL=Login.css.map */

@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import ScrollToTop from "./ScrollToTop";
 import Home from "./pages/Home";
-import LoginRegister from "./pages/LoginRegister";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import ProductDetails from "./pages/ProductDetails";
 import ProductList from "./pages/ProductList";
 import Cart from "./pages/Cart";
@@ -13,12 +14,12 @@ function App() {
     <>
       <ScrollToTop />
       <Routes>
-        <Route index path="/" element={<Home />} />
-        <Route index path="/login" element={<LoginRegister />} />
-        <Route index path="/register" element={<LoginRegister />} />
-        <Route index path="/all-products" element={<ProductList />} />
-        <Route index path="/product" element={<ProductDetails />} />
-        <Route index path="/cart" element={<Cart />} />
+        <Route exact path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/products/:category" element={<ProductList />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </>
   );
