@@ -20,6 +20,10 @@
 
     select {
       padding: 3px 8px;
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 }

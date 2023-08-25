@@ -25,4 +25,7 @@
 }
 .product-list_optimize select {
   padding: 3px 8px;
+}
+.product-list_optimize select:focus {
+  outline: none;
 }/*# sourceMappingURL=ProductList.css.map */

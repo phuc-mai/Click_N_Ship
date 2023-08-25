@@ -3,8 +3,22 @@ import Newsletter from "../components/Newsletter"
 import Footer from "../components/Footer"
 import Products from "../components/Products"
 import "../styles/ProductListStyle/ProductList.scss"
+import { useLocation } from "react-router-dom"
+import { useState } from "react"
 
 const ProductList = () => {
+  const location = useLocation()
+  const category = location.pathname.split("/")[2]
+  const [filters, setFilters] = useState({})
+  const [sort, setSort] = useState("newest")
+
+  const handleFilters = (e) => {
+    setFilters({
+      ...filters,
+      [e.target.name]: e.target.value
+    })
+  }
+
   return (
     <>
       <Navbar />
@@ -13,8 +27,8 @@ const ProductList = () => {
         <div className="product-list_optimize">
           <div className="product-list_optimize_filter">
             <h3>Filter Products:</h3>
-            <select>
-              <option>Color</option>
+            <select name="color" onChange={handleFilters}>
+              <option disabled>Color</option>
               <option>White</option>
               <option>Black</option>
               <option>Yellow</option>
@@ -22,28 +36,26 @@ const ProductList = () => {
               <option>Blue</option>
               <option>Green</option>
             </select>
-            <select>
-              <option>Size</option>
-              <option>XS</option>
-              <option>S</option>
-              <option>M</option>
-              <option>L</option>
-              <option>XL</option>
-              <option>XXL</option>
+            <select name="size" onChange={handleFilters}>
+              <option disabled>Size</option>
+              <option>Small</option>
+              <option>Medium</option>
+              <option>Large</option>
+              <option>X-Large</option>
             </select>
           </div>
 
           <div>
             <h3>Sort Products:</h3>
-            <select>
-              <option>Newest</option>
-              <option>Low to High</option>
-              <option>High to Low</option>
+            <select onChange={(e) => setSort(e.target.value)}>
+              <option value="newest">Newest</option>
+              <option value="lowtohigh">Low to High</option>
+              <option value="hightolow">High to Low</option>
             </select>
           </div>
         </div>
       </div>
-      <Products />
+      <Products category={category} filters={filters} sort={sort}/>
       <Newsletter />
       <Footer />
     </>

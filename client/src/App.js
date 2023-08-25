@@ -1,5 +1,4 @@
-import { Routes, Route } from "react-router-dom";
-
+import { Routes, Route, redirect } from "react-router-dom";
 import "./App.css";
 import ScrollToTop from "./ScrollToTop";
 import Home from "./pages/Home";
@@ -10,12 +9,14 @@ import ProductList from "./pages/ProductList";
 import Cart from "./pages/Cart";
 
 function App() {
+  const user = true
   return (
     <>
       <ScrollToTop />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+          {/* {user ? redirect("/") : <Login />} */}
         <Route path="/register" element={<Register />} />
         <Route path="/products/:category" element={<ProductList />} />
         <Route path="/product/:id" element={<ProductDetails />} />

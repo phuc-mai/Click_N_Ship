@@ -10,6 +10,10 @@ const productRoutes = require("./routes/product");
 const cartRoutes = require("./routes/cart");
 const orderRoutes = require("./routes/order");
 const stripeRoutes = require("./routes/stripe");
+const Product = require("./models/Product")
+
+const products = require("./data/data");
+
 
 dotenv.config();
 
@@ -33,6 +37,9 @@ mongoose
   })
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+
+    /* ADD DATA ONE TIME */
+    // Product.insertMany(products)
   })
   .catch((err) => console.log(`${err} did not connect`));
 
