@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="footer_left">
-        <img src="assets/logo.png" />
+        <a href="/"><img src="/assets/logo.png" alt="logo"/></a>
         <p>
           There are many collections of dress, top, bottoms, accessories
         </p>
@@ -48,7 +48,7 @@ const Footer = () => {
           <Email />
           <p>support@clicknship.com</p>
         </div>
-        <img src="assets/payment.png" alt="payment"/>
+        <img src="/assets/payment.png" alt="payment"/>
       </div>
     </div>
   );

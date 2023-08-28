@@ -8,76 +8,50 @@
 }
 
 .product {
-  padding: 70px;
+  height: 400px;
+  width: 300px;
   display: flex;
-  gap: 70px;
+  align-items: center;
+  justify-content: center;
+  background-color: #edf3f5;
+  position: relative;
 }
 .product img {
-  width: 50%;
+  height: 100%;
 }
-.product_details h1 {
-  font-size: 40px;
-  margin-bottom: 30px;
-}
-.product_details h2 {
-  font-size: 35px;
-  margin-top: 20px;
-}
-.product_details_optimize {
+.product_icons {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  justify-content: center;
+  z-index: 3;
+  opacity: 0;
+  transition: all 0.5s ease;
 }
-.product_details_optimize h3 {
-  font-size: 22px;
-  margin-right: 20px;
+.product_icons:hover {
+  opacity: 1;
 }
-.product_details_optimize_color {
-  display: flex;
-  align-items: center;
-}
-.product_details_optimize_color div:nth-child(2) {
-  background-color: black;
-}
-.product_details_optimize_color div:nth-child(3) {
-  background-color: red;
-}
-.product_details_optimize_color div:nth-child(4) {
-  background-color: blue;
-}
-.product_details_optimize_color_option {
-  width: 30px;
-  height: 30px;
+.product_icons_icon,
+.product_icons a {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  margin: 0 7px;
-  cursor: pointer;
-}
-.product_details_optimize_size {
-  display: flex;
-  margin-left: 90px;
-}
-.product_details_optimize_size select {
-  padding: 3px 8px;
-}
-.product_details_quantity {
+  background-color: white;
+  color: black;
   display: flex;
   align-items: center;
-  gap: 20px;
-  margin: 40px 0;
-}
-.product_details_quantity p {
-  font-size: 30px;
-}
-.product_details button {
-  padding: 10px 15px;
-  background-color: #ffbaba;
-  border: none;
-  font-size: 20px;
-  font-weight: 500;
+  justify-content: center;
+  margin: 10px;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: all 0.5s ease-in-out;
 }
-.product_details button:hover {
-  background-color: #ff5252;
-  color: white;
+.product_icons_icon:hover,
+.product_icons a:hover {
+  background-color: #fbf0f4;
+  transform: scale(1.2);
 }/*# sourceMappingURL=Product.css.map */

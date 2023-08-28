@@ -18,7 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
           {/* {user ? redirect("/") : <Login />} */}
         <Route path="/register" element={<Register />} />
-        <Route path="/products/:category" element={<ProductList />} />
+        <Route path="/products/:category?" element={<ProductList />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>

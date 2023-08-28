@@ -1,5 +1,6 @@
 import { ShoppingCart, Search, FavoriteBorder } from "@mui/icons-material";
 import "../styles/ProductsStyle/Products.scss";
+import Product from "./Product";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -16,7 +17,6 @@ const Products = ({ category, filters, sort }) => {
             ? `http://localhost:3001/products?category=${category}`
             : "http://localhost:3001/products"
         );
-        console.log(products);
         setProducts(products.data);
       } catch (err) {}
     };
@@ -27,8 +27,8 @@ const Products = ({ category, filters, sort }) => {
     category &&
       setFilteredProducts(
         products.filter((item) =>
-          Object.entries(filters).every(([key, value]) =>
-            item[key].includes(value)
+          Object.entries(filters).every(([key, value]) => 
+            item[key]?.includes(value)
           )
         )
       );
@@ -54,36 +54,10 @@ const Products = ({ category, filters, sort }) => {
     <div className="products">
       {category
         ? filteredProducts.map((item) => (
-            <div className="products_item" key={item.id}>
-              <img src={item.img} alt="product" />
-              <div className="products_item_icons">
-                <div className="products_item_icons_icon">
-                  <ShoppingCart />
-                </div>
-                <div className="products_item_icons_icon">
-                  <Search />
-                </div>
-                <div className="products_item_icons_icon">
-                  <FavoriteBorder />
-                </div>
-              </div>
-            </div>
+           <Product item={item}/>
           ))
         : products.slice(0, 7).map((item) => (
-            <div className="products_item" key={item.id}>
-              <img src={item.img} alt="product" />
-              <div className="products_item_icons">
-                <div className="products_item_icons_icon">
-                  <ShoppingCart />
-                </div>
-                <div className="products_item_icons_icon">
-                  <Search />
-                </div>
-                <div className="products_item_icons_icon">
-                  <FavoriteBorder />
-                </div>
-              </div>
-            </div>
+            <Product item={item}/>
           ))}
     </div>
   );

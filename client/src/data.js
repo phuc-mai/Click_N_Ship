@@ -41,7 +41,7 @@ export const categories = [
     id: 3,
     img: "assets/category-03.jpeg",
     alt: 'jackets',
-    title: "LIGHT PANTS",
+    title: "AWESOME TOPS",
     category: "top"
   },
 ];

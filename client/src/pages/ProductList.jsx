@@ -12,6 +12,8 @@ const ProductList = () => {
   const [filters, setFilters] = useState({})
   const [sort, setSort] = useState("newest")
 
+  console.log(filters)
+  
   const handleFilters = (e) => {
     setFilters({
       ...filters,
@@ -23,11 +25,11 @@ const ProductList = () => {
     <>
       <Navbar />
       <div className="product-list">
-        <h1>Dress</h1>
+        <h1>{category.toUpperCase()}</h1>
         <div className="product-list_optimize">
           <div className="product-list_optimize_filter">
             <h3>Filter Products:</h3>
-            <select name="color" onChange={handleFilters}>
+            <select name="colors" onChange={handleFilters}>
               <option disabled>Color</option>
               <option>White</option>
               <option>Black</option>
@@ -36,7 +38,7 @@ const ProductList = () => {
               <option>Blue</option>
               <option>Green</option>
             </select>
-            <select name="size" onChange={handleFilters}>
+            <select name="sizes" onChange={handleFilters}>
               <option disabled>Size</option>
               <option>Small</option>
               <option>Medium</option>

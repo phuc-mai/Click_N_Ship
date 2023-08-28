@@ -1,14 +1,17 @@
 @import "../../variables/Variables.module.scss";
 
 .categories {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
   padding: 40px;
 
   .category {
     position: relative;
-    height: 450px;
+    height: 400px;
+    width: 350px;
 
     &_bg {
       img {
@@ -36,6 +39,7 @@
       align-items: center;
       text-align: center;
       color: white;
+      padding: 0 20px;
 
       a {
         border: 2px solid white;

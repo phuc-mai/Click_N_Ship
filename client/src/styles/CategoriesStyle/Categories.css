@@ -8,14 +8,17 @@
 }
 
 .categories {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
   padding: 40px;
 }
 .categories .category {
   position: relative;
-  height: 450px;
+  height: 400px;
+  width: 350px;
 }
 .categories .category_bg img {
   position: absolute;
@@ -40,6 +43,7 @@
   align-items: center;
   text-align: center;
   color: white;
+  padding: 0 20px;
 }
 .categories .category_text a {
   border: 2px solid white;

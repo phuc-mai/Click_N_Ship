@@ -3,10 +3,23 @@ import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import "../styles/CartStyle/Cart.scss";
 import variables from "../variables/Variables.module.scss";
+import StripeCheckout from "react-stripe-checkout"
 
 import { RemoveCircleOutline, AddCircleOutline } from "@mui/icons-material";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+
+const STRIPE_KEY = process.env.REACT_STRIPE_CHECKOUT
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+  const {stripeToken, setStripeToken} = useState(null)
+  const onToken = (token) => {
+    setStripeToken(token)
+  }
+
+
+
   return (
     <>
       <Navbar />
@@ -22,98 +35,60 @@ const Cart = () => {
 
         <div className="cart_bottom">
           <div className="cart_bottom_details">
-            <div className="cart_bottom_details_item">
-              <div className="cart_bottom_details_item_left">
-                <img src="assets/product-cart-02.png" alt="product" />
-                <div className="cart_bottom_details_item_left_info">
-                  <div className="cart_bottom_details_item_left_info_type">
-                    <h4>Product:</h4>
-                    <p>JESSIE THUNDER</p>
+            {cart.products?.map((item) => (
+              <>
+                <div className="cart_bottom_details_item">
+                  <div className="cart_bottom_details_item_left">
+                    <img src={`/assets/${item.img}`} alt="product" />
+                    <div className="cart_bottom_details_item_left_info">
+                      <div className="cart_bottom_details_item_left_info_type">
+                        <h4>Product:</h4>
+                        <p>{item.title}</p>
+                      </div>
+                      <div className="cart_bottom_details_item_left_info_type">
+                        <h4>ID:</h4>
+                        <p>{item._id}</p>
+                      </div>
+                      <div style={{ backgroundColor: item.color }} />
+                      <div className="cart_bottom_details_item_left_info_type">
+                        <h4>Size:</h4>
+                        <p>{item.size}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="cart_bottom_details_item_left_info_type">
-                    <h4>ID:</h4>
-                    <p>93813718293</p>
-                  </div>
-                  <div />
-                  <div className="cart_bottom_details_item_left_info_type">
-                    <h4>Size:</h4>
-                    <p>37</p>
-                  </div>
-                </div>
-              </div>
 
-              <div className="cart_bottom_details_item_right">
-                <div className="cart_bottom_details_item_right_quantity">
-                  <RemoveCircleOutline
-                    sx={{
-                      fontSize: "35px",
-                      cursor: "pointer",
-                      "&:hover": { color: variables.lightred },
-                    }}
-                  />
-                  <p>1</p>
-                  <AddCircleOutline
-                    sx={{
-                      fontSize: "35px",
-                      cursor: "pointer",
-                      "&:hover": { color: variables.lightred },
-                    }}
-                  />
+                  <div className="cart_bottom_details_item_right">
+                    <div className="cart_bottom_details_item_right_quantity">
+                      <RemoveCircleOutline
+                        sx={{
+                          fontSize: "35px",
+                          cursor: "pointer",
+                          "&:hover": { color: variables.lightred },
+                        }}
+                      />
+                      <p>{item.quantity}</p>
+                      <AddCircleOutline
+                        sx={{
+                          fontSize: "35px",
+                          cursor: "pointer",
+                          "&:hover": { color: variables.lightred },
+                        }}
+                      />
+                    </div>
+                    <h2>$ {(item.price * item.quantity).toFixed(2)}</h2>
+                  </div>
                 </div>
-                <h2>$ 15</h2>
-              </div>
-            </div>
 
-            <hr />
-            
-            <div className="cart_bottom_details_item">
-              <div className="cart_bottom_details_item_left">
-                <img src="assets/product-cart-02.png" alt="product" />
-                <div className="cart_bottom_details_item_left_info">
-                  <div className="cart_bottom_details_item_left_info_type">
-                    <h4>Product:</h4>
-                    <p>JESSIE THUNDER</p>
-                  </div>
-                  <div className="cart_bottom_details_item_left_info_type">
-                    <h4>ID:</h4>
-                    <p>93813718293</p>
-                  </div>
-                  <div />
-                  <div className="cart_bottom_details_item_left_info_type">
-                    <h4>Size:</h4>
-                    <p>37</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cart_bottom_details_item_right">
-                <div className="cart_bottom_details_item_right_quantity">
-                  <RemoveCircleOutline
-                    sx={{
-                      fontSize: "35px",
-                      cursor: "pointer",
-                      "&:hover": { color: variables.lightred },
-                    }}
-                  />
-                  <p>1</p>
-                  <AddCircleOutline
-                    sx={{
-                      fontSize: "35px",
-                      cursor: "pointer",
-                      "&:hover": { color: variables.lightred },
-                    }}
-                  />
-                </div>
-                <h2>$ 15</h2>
-              </div>
-            </div>
+                <hr />
+              </>
+            ))}
           </div>
 
           <div className="cart_bottom_summary">
             <h3>ORDER SUMARY</h3>
             <div className="cart_bottom_summary_item">
               <p>Subtotal</p>
-              <p>$ 80</p>
+              <p>$ {cart.total.toFixed(2)}</p>
             </div>
             <div className="cart_bottom_summary_item">
               <p>Estimated Shipping</p>
@@ -125,8 +100,21 @@ const Cart = () => {
             </div>
             <div className="cart_bottom_summary_item">
               <p>Total</p>
-              <p>$ 80</p>
+              <p>$ {cart.total.toFixed(2)}</p>
             </div>
+
+            <StripeCheckout
+              name="Click N' Ship"
+              image="/assets/logo.png"
+              billingAddress
+              shippingAddress
+              description={`Your total is $ ${cart.total}`}
+              amount={cart.total * 100}
+              stripeKey={STRIPE_KEY}
+              token={onToken}
+            >
+            <button >CHECK OUT NOW</button>
+            </StripeCheckout>
           </div>
         </div>
       </div>
