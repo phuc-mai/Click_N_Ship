@@ -55,20 +55,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-/* GET SEARCHED PRODUCTS */
-// router.get("/search", async (req, res) => {
-
-//   try {
-//     const { q } = req.query
-//     console.log(q)
-//     const products = await Product.filter((item) => item.title.toLowerCase().includes(q))
-    
-//     res.status(200).json(products);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 /* UPDATE */
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
