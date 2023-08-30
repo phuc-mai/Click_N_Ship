@@ -18,6 +18,12 @@
   align-items: center;
   justify-content: space-between;
 }
+@media (max-width: 820px) {
+  .product-list_optimize {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
 .product-list_optimize > * {
   display: flex;
   gap: 20px;

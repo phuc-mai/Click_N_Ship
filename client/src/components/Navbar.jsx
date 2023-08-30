@@ -8,6 +8,7 @@ import { IconButton, Badge } from "@mui/material";
 import variables from "../variables/Variables.module.scss";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import Announcement from "./Announcement";
 
@@ -15,17 +16,20 @@ const Navbar = () => {
   const cart = useSelector((state) => state.cart);
   const quantityCart = cart.quantity;
 
+  const [search, setSearch] = useState("")
+
   return (
     <>
       <Announcement />
+
       <div className="navbar">
         <div className="navbar_right">
           <a href="/">
             <img src="/assets/logo.png" alt="logo" />
           </a>
           <div className="navbar_right_search">
-            <input placeholder="Search..." />
-            <IconButton>
+            <input placeholder="Search..." onChange={(e) => setSearch(e.target.value)}/>
+            <IconButton href={`/products?query=${search}`}>
               <Search sx={{ "&:hover": { color: variables.lightred } }} />
             </IconButton>
           </div>

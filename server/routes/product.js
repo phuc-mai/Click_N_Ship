@@ -29,10 +29,11 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-/* GET ALL PRODUCTS */
+/* GET PRODUCTS */
 router.get("/", async (req, res) => {
   const qNew = req.query.new;
   const qCategory = req.query.category;
+
   try {
     let products;
 
@@ -53,6 +54,20 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+/* GET SEARCHED PRODUCTS */
+// router.get("/search", async (req, res) => {
+
+//   try {
+//     const { q } = req.query
+//     console.log(q)
+//     const products = await Product.filter((item) => item.title.toLowerCase().includes(q))
+    
+//     res.status(200).json(products);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 /* UPDATE */
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {

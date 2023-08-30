@@ -13,10 +13,14 @@
     &_slide {
       flex: 0 0 100%;
       height: 100vh;
-      padding: 20px;
       display: flex;
       align-items: center;
       background-color: $lightpink;
+
+      @include md {
+        padding: 30px 20px;
+        min-height: 50vh;
+      }
 
       &_img {
         height: 100%;
@@ -67,6 +71,8 @@
           border-radius: 10px;
           font-size: 22px;
           cursor: pointer;
+          text-decoration: none;
+          color: black;
 
           &:hover {
             color: $lightred;
@@ -74,30 +80,29 @@
           }
         }
       }
+
+      &_button_prev,
+      &_button_next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 7px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $pink;
+      }
+
+      &_button_prev {
+        left: 10;
+      }
+
+      &_button_next {
+        right: 10;
+      }
     }
   }
-
-  button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 7px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $pink;
-    right: 10;
-  }
-
-  &_button_prev {
-    left: 10;
-  }
-
-  &_button_next {
-    right: 10;
-  }
 }
-

@@ -28,7 +28,6 @@ const ProductDetails = () => {
       );
       const product = await response.data;
       setProduct(product);
-      console.log(product);
     } catch {}
   };
 

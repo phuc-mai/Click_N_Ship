@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { sliderItems } from "../data";
-import { ArrowBackIos, ArrowForwardIos} from "@mui/icons-material"
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import "../styles/SliderStyle/Slider.scss";
 
 const Slider = () => {
@@ -32,18 +32,24 @@ const Slider = () => {
             <div className="slider_items_slide_text">
               <h1>{slide.title}</h1>
               <p>{slide.desc}</p>
-              <a>SHOP NOW</a>
+              <a href="/products/">SHOP NOW</a>
             </div>
+
+            <button
+              className="slider_items_slide_button_prev"
+              onClick={handlePrev}
+            >
+              <ArrowBackIos />
+            </button>
+            <button
+              className="slider_items_slide_button_next"
+              onClick={handleNext}
+            >
+              <ArrowForwardIos />
+            </button>
           </div>
         ))}
       </div>
-
-      <button className="slider_button_prev" onClick={handlePrev}>
-        <ArrowBackIos />
-      </button>
-      <button className="slider_button_next" onClick={handleNext}>
-        <ArrowForwardIos />
-      </button>
     </div>
   );
 };

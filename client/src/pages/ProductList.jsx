@@ -3,17 +3,17 @@ import Newsletter from "../components/Newsletter"
 import Footer from "../components/Footer"
 import Products from "../components/Products"
 import "../styles/ProductListStyle/ProductList.scss"
-import { useLocation } from "react-router-dom"
+import { useLocation, useSearchParams } from "react-router-dom"
 import { useState } from "react"
 
 const ProductList = () => {
   const location = useLocation()
-  const category = location.pathname.split("/")[2]
+  const category = location.pathname.split("/")[2] || '';
+  const [search] = useSearchParams();
+  
   const [filters, setFilters] = useState({})
   const [sort, setSort] = useState("newest")
-
-  console.log(filters)
-  
+    
   const handleFilters = (e) => {
     setFilters({
       ...filters,
@@ -57,7 +57,7 @@ const ProductList = () => {
           </div>
         </div>
       </div>
-      <Products category={category} filters={filters} sort={sort}/>
+      <Products search={search.get('query')} category={category} filters={filters} sort={sort}/>
       <Newsletter />
       <Footer />
     </>

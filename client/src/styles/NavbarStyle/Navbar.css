@@ -36,6 +36,11 @@
 .navbar_right_search input:focus {
   outline: none;
 }
+@media (max-width: 820px) {
+  .navbar_right_search {
+    display: none;
+  }
+}
 .navbar_left {
   display: flex;
   gap: 30px;
