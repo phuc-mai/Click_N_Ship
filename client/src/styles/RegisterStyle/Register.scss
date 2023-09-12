@@ -37,12 +37,13 @@
 
     button {
       width: 40%;
-      @include buttonStyle
+      @include buttonStyle;
     }
 
-    p {
+    a {
+      text-decoration: none;
+      color: black;
       font-size: 13px;
-      cursor: pointer;
 
       &:hover {
         text-decoration: underline;

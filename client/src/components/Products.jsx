@@ -1,4 +1,3 @@
-import { ShoppingCart, Search, FavoriteBorder } from "@mui/icons-material";
 import "../styles/ProductsStyle/Products.scss";
 import Product from "./Product";
 
@@ -17,7 +16,7 @@ const Products = ({ search, category, filters, sort }) => {
           : "http://localhost:3001/products"
       );
 
-      if(search) 
+      if (search) 
         setProducts(response.data.filter((item) => item.title.toLowerCase().includes(search.toLowerCase())))
       else
         setProducts(response.data);

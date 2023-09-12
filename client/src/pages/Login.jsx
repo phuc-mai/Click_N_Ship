@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/LoginStyle/Login.scss";
 
 const Login = () => {
@@ -14,8 +13,9 @@ const Login = () => {
           <button>SUBMIT</button>
 
           <div>
-            <p>Forget your password?</p>
-            <p>Don't have an account? Sign In Here</p>
+            <a>Forget your password?</a>
+            <br />
+            <a href="/register">Don't have an account? Sign In Here</a>
           </div>
         </div>
       </div>

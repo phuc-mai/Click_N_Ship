@@ -49,10 +49,11 @@
   background-color: #ff5252;
   color: white;
 }
-.register_form p {
+.register_form a {
+  text-decoration: none;
+  color: black;
   font-size: 13px;
-  cursor: pointer;
 }
-.register_form p:hover {
+.register_form a:hover {
   text-decoration: underline;
 }/*# sourceMappingURL=Register.css.map */

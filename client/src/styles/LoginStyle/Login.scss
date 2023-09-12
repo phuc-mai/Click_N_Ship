@@ -40,7 +40,9 @@
       @include buttonStyle
     }
 
-    p {
+    a {
+      text-decoration: none;
+      color: black;
       font-size: 13px;
       cursor: pointer;
 

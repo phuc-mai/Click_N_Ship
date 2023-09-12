@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import "../styles/RegisterStyle/Register.scss";
 
 const Register = () => {
@@ -19,13 +20,7 @@ const Register = () => {
 
         <button>SUBMIT</button>
 
-        {/* {login ? (
-          <>
-            <p>Forget your password?</p>
-            <p>Don't have an account? Sign In Here</p>
-          </>
-        ) : ( */}
-        <p>Already have an account? Log In Here</p>
+        <a href="/login">Already have an account? Log In Here</a>
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ const Navbar = () => {
   const cart = useSelector((state) => state.cart);
   const quantityCart = cart.quantity;
 
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
 
   return (
     <>
@@ -28,7 +28,10 @@ const Navbar = () => {
             <img src="/assets/logo.png" alt="logo" />
           </a>
           <div className="navbar_right_search">
-            <input placeholder="Search..." onChange={(e) => setSearch(e.target.value)}/>
+            <input
+              placeholder="Search..."
+              onChange={(e) => setSearch(e.target.value)}
+            />
             <IconButton href={`/products?query=${search}`}>
               <Search sx={{ "&:hover": { color: variables.lightred } }} />
             </IconButton>
@@ -36,14 +39,16 @@ const Navbar = () => {
         </div>
 
         <div className="navbar_left">
-          <IconButton>
-            <PersonOutlined
-              sx={{
-                fontSize: "35px",
-                "&:hover": { color: variables.lightred },
-              }}
-            />
-          </IconButton>
+          <Link to="/login">
+            <IconButton>
+              <PersonOutlined
+                sx={{
+                  fontSize: "35px",
+                  "&:hover": { color: variables.lightred },
+                }}
+              />
+            </IconButton>
+          </Link>
 
           <Link to="/cart">
             <IconButton>

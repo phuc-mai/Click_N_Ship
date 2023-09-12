@@ -103,13 +103,13 @@
     }
 
     &_summary {
-      max-width: 30%;
+      width: 30%;
       padding: 20px;
       border: 1px solid black;
       border-radius: 15px;
 
       @include lg {
-        max-width: 50%;
+        width: 50%;
       }
 
       h3 {

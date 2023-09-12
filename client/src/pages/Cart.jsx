@@ -3,22 +3,42 @@ import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import "../styles/CartStyle/Cart.scss";
 import variables from "../variables/Variables.module.scss";
-import StripeCheckout from "react-stripe-checkout"
+import { userRequest } from "../requestMethod";
+import { increaseQty, decreaseQty } from "../redux/cartRedux";
 
 import { RemoveCircleOutline, AddCircleOutline } from "@mui/icons-material";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import StripeCheckout from "react-stripe-checkout";
 
-const STRIPE_KEY = process.env.REACT_STRIPE_CHECKOUT
+const STRIPE_KEY = process.env.REACT_STRIPE_CHECKOUT;
 
 const Cart = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  const {stripeToken, setStripeToken} = useState(null)
+  const { stripeToken, setStripeToken } = useState(null);
+
   const onToken = (token) => {
-    setStripeToken(token)
-  }
+    setStripeToken(token);
+  };
 
-
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: cart.total * 100,
+        });
+        navigate("/success", {
+          stripeData: res.data,
+          products: cart,
+        });
+      } catch {}
+    };
+    stripeToken && cart.total >= 1 && makeRequest();
+  }, [stripeToken, cart.total]);
 
   return (
     <>
@@ -26,10 +46,12 @@ const Cart = () => {
       <div className="cart">
         <h1>YOUR BAG</h1>
         <div className="cart_top">
-          <button>CONINUE SHOPPING</button>
+          <Link to="/">
+            <button>CONINUE SHOPPING</button>
+          </Link>
           <div className="cart_top_right">
-            <p>Shopping Bag (2)</p>
-            <p>Your Wishlist (0)</p>
+            {/* <p>Shopping Bag (2)</p>
+            <p>Your Wishlist (0)</p> */}
           </div>
         </div>
 
@@ -60,6 +82,7 @@ const Cart = () => {
                   <div className="cart_bottom_details_item_right">
                     <div className="cart_bottom_details_item_right_quantity">
                       <RemoveCircleOutline
+                        onClick={() => dispatch(decreaseQty({ id: item.id }))}
                         sx={{
                           fontSize: "35px",
                           cursor: "pointer",
@@ -68,6 +91,7 @@ const Cart = () => {
                       />
                       <p>{item.quantity}</p>
                       <AddCircleOutline
+                        onClick={() => dispatch(increaseQty({ id: item.id }))}
                         sx={{
                           fontSize: "35px",
                           cursor: "pointer",
@@ -113,7 +137,7 @@ const Cart = () => {
               stripeKey={STRIPE_KEY}
               token={onToken}
             >
-            <button >CHECK OUT NOW</button>
+              <button>CHECK OUT NOW</button>
             </StripeCheckout>
           </div>
         </div>

@@ -45,6 +45,17 @@
 .footer_center ul {
   list-style: none;
   margin-top: 20px;
+  cursor: pointer;
+}
+.footer_center ul li:hover {
+  color: #ff5252;
+}
+.footer_center ul a {
+  text-decoration: none;
+  color: black;
+}
+.footer_center ul a:hover {
+  color: #ff5252;
 }
 .footer_right {
   width: 350px;

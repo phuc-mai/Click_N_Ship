@@ -25,9 +25,9 @@ const Footer = () => {
       <div className="footer_center">
         <h3>Useful Links</h3>
         <ul>
-          <li>Home</li>
-          <li>Cart</li>
-          <li>My Account</li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/cart">Cart</a></li>
+          <li><a href="/login">My Account</a></li>
           <li>Order Tracking</li>
           <li>WishList</li>
           <li>Terms & Conditions</li>
