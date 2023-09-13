@@ -75,7 +75,7 @@ const Cart = () => {
                       </div>
                       <div className="cart_bottom_details_item_left_info_type">
                         <h4>ID:</h4>
-                        <p>{item._id}</p>
+                        <p>{item.id}</p>
                       </div>
                       <div style={{ backgroundColor: item.color }} />
                       <div className="cart_bottom_details_item_left_info_type">
