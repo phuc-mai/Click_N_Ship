@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import "../styles/CartStyle/Cart.scss";
 import variables from "../variables/Variables.module.scss";
 import { userRequest } from "../requestMethod";
-import { increaseQty, decreaseQty } from "../redux/cartRedux";
+import { increaseQty, decreaseQty, removeFromCart } from "../redux/cartRedux";
 
 import { RemoveCircleOutline, AddCircleOutline } from "@mui/icons-material";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,6 +19,12 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const { stripeToken, setStripeToken } = useState(null);
+  
+  console.log(cart)
+
+  const totalPrice = cart.products.reduce((total, item) => {
+    return total + item.quantity * item.price;
+  }, 0);
 
   const onToken = (token) => {
     setStripeToken(token);
@@ -50,8 +56,8 @@ const Cart = () => {
             <button>CONINUE SHOPPING</button>
           </Link>
           <div className="cart_top_right">
-            {/* <p>Shopping Bag (2)</p>
-            <p>Your Wishlist (0)</p> */}
+            <p>Shopping Bag ({cart.products?.length})</p>
+            {/* <p>Your Wishlist (0)</p> */} 
           </div>
         </div>
 
@@ -99,6 +105,7 @@ const Cart = () => {
                         }}
                       />
                     </div>
+                    <button onClick={() => dispatch(removeFromCart({ id: item.id }))}>Remove</button>
                     <h2>$ {(item.price * item.quantity).toFixed(2)}</h2>
                   </div>
                 </div>
@@ -112,7 +119,7 @@ const Cart = () => {
             <h3>ORDER SUMARY</h3>
             <div className="cart_bottom_summary_item">
               <p>Subtotal</p>
-              <p>$ {cart.total.toFixed(2)}</p>
+              <p>$ {totalPrice.toFixed(2)}</p>
             </div>
             <div className="cart_bottom_summary_item">
               <p>Estimated Shipping</p>
@@ -124,7 +131,7 @@ const Cart = () => {
             </div>
             <div className="cart_bottom_summary_item">
               <p>Total</p>
-              <p>$ {cart.total.toFixed(2)}</p>
+              <p>$ {totalPrice.toFixed(2)}</p>
             </div>
 
             <StripeCheckout

@@ -14,7 +14,7 @@ import Announcement from "./Announcement";
 
 const Navbar = () => {
   const cart = useSelector((state) => state.cart);
-  const quantityCart = cart.quantity;
+  const quantityCart = cart.products.length;
 
   const [search, setSearch] = useState("");
 

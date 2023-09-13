@@ -99,18 +99,28 @@
   font-size: 24px;
   font-weight: 500;
 }
+.cart_bottom_details_item_right button {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  transition: 0.2s ease;
+}
+.cart_bottom_details_item_right button:hover {
+  background-color: #ffbaba;
+}
 .cart_bottom_details_item_right h2 {
   text-align: center;
 }
 .cart_bottom_summary {
-  max-width: 30%;
+  width: 30%;
   padding: 20px;
   border: 1px solid black;
   border-radius: 15px;
 }
 @media (max-width: 1000px) {
   .cart_bottom_summary {
-    max-width: 50%;
+    width: 50%;
   }
 }
 .cart_bottom_summary h3 {

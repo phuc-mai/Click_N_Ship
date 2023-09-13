@@ -95,6 +95,18 @@
             }
           }
 
+          button {
+            cursor: pointer;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 10px;
+            transition: 0.2s ease;
+
+            &:hover {
+              background-color: $pink;
+            }
+          }
+
           h2 {
             text-align: center;
           }
