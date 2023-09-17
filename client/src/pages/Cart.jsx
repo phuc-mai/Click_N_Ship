@@ -34,7 +34,7 @@ const Cart = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await userRequest.post("http://localhost:3001/checkout/payment", {
+        const res = await userRequest.post("https://clicknshipserver.phucmai.com/checkout/payment", {
           tokenId: stripeToken.id,
           amount: parseInt(totalPrice),
         });

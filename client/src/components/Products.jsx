@@ -12,8 +12,8 @@ const Products = ({ search, category, filters, sort }) => {
     try {
       const response = await axios.get(
         category !== ''
-          ? `http://localhost:3001/products?category=${category}`
-          : "http://localhost:3001/products"
+          ? `https://clicknshipserver.phucmai.com/products?category=${category}`
+          : "https://clicknshipserver.phucmai.com/products"
       );
 
       if (search) 

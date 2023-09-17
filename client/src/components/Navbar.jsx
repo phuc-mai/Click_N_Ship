@@ -25,7 +25,8 @@ const Navbar = () => {
   const quantityWishlist = currentUser?.wishlist?.length;
   const [search, setSearch] = useState("");
 
-  const fullName = `${currentUser?.firstName} ${currentUser?.lastName}`;
+  const fullName = currentUser ? `${currentUser?.firstName} ${currentUser?.lastName}` : 'Please login';
+  
   return (
     <>
       <Announcement />
@@ -56,7 +57,7 @@ const Navbar = () => {
             }}
           >
             <option value={fullName}>{fullName}</option>
-            <option value="logout">Logout</option>
+           {fullName !== 'Please login' &&  <option value="logout">Logout</option>}
           </select>
           <Link to="/login">
             <IconButton>

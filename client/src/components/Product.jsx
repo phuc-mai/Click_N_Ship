@@ -14,7 +14,7 @@ const Product = ({ item }) => {
 
   const patchWishlist = async () => {
     const response = await fetch(
-      `http://localhost:3001/users/${currentUser.user._id}/${item._id}`,
+      `https://clicknshipserver.phucmai.com/users/${currentUser.user._id}/${item._id}`,
       {
         method: "PATCH",
         headers: {

@@ -25,7 +25,7 @@ const ProductDetails = () => {
   const getProduct = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/products/${productId}`
+        `https://clicknshipserver.phucmai.com/products/${productId}`
       );
       const product = await response.data;
       setProduct(product);
