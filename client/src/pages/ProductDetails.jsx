@@ -18,6 +18,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
+  const [selectedColor, setSelectedColor] = useState("")
   const [size, setSize] = useState("");
   const dispatch = useDispatch();
 
@@ -47,6 +48,7 @@ const ProductDetails = () => {
     dispatch(addProduct({ ...product, quantity, color, size }));
   };
 
+  
   return (
     <>
       <Navbar />
@@ -60,11 +62,14 @@ const ProductDetails = () => {
             <div className="productPage_details_optimize_color">
               <h3>Colors</h3>
               {product.colors?.map((color) => (
-                <div
+                <div 
                   key={color}
-                  onClick={() => setColor(color)}
-                  style={{ border: "1px solid black", backgroundColor: color }}
-                  className="productPage_details_optimize_color_option"
+                  onClick={() => {
+                    setColor(color)
+                    setSelectedColor(color)
+                  }}
+                  style={{ backgroundColor: color }}
+                  className={`productPage_details_optimize_color_option ${selectedColor === color ? "selected" : ""}`}
                 />
               ))}
             </div>

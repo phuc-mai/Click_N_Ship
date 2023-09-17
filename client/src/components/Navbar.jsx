@@ -2,22 +2,30 @@ import {
   ShoppingCartOutlined,
   PersonOutlined,
   Search,
+  FavoriteBorder,
 } from "@mui/icons-material";
 import "../styles/NavbarStyle/Navbar.css";
 import { IconButton, Badge } from "@mui/material";
-import variables from "../variables/Variables.module.scss";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+import variables from "../variables/Variables.module.scss";
 import Announcement from "./Announcement";
+import { logout } from "../redux/userRedux";
 
 const Navbar = () => {
-  const cart = useSelector((state) => state.cart);
-  const quantityCart = cart.products.length;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const cart = useSelector((state) => state?.cart);
+  const currentUser = useSelector((state) => state?.user?.currentUser?.user);
+
+  const quantityCart = cart?.products?.length;
+  const quantityWishlist = currentUser?.wishlist?.length;
   const [search, setSearch] = useState("");
 
+  const fullName = `${currentUser?.firstName} ${currentUser?.lastName}`;
   return (
     <>
       <Announcement />
@@ -39,6 +47,17 @@ const Navbar = () => {
         </div>
 
         <div className="navbar_left">
+          <select
+            value={fullName}
+            onChange={(e) => {
+              if (e.target.value !== "logout") return;
+              dispatch(logout());
+              navigate("/login");
+            }}
+          >
+            <option value={fullName}>{fullName}</option>
+            <option value="logout">Logout</option>
+          </select>
           <Link to="/login">
             <IconButton>
               <PersonOutlined
@@ -47,6 +66,19 @@ const Navbar = () => {
                   "&:hover": { color: variables.lightred },
                 }}
               />
+            </IconButton>
+          </Link>
+
+          <Link to="/wishlist">
+            <IconButton>
+              <Badge badgeContent={quantityWishlist} color="primary">
+                <FavoriteBorder
+                  sx={{
+                    fontSize: "35px",
+                    "&:hover": { color: variables.lightred },
+                  }}
+                />
+              </Badge>
             </IconButton>
           </Link>
 

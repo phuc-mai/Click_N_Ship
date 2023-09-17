@@ -4,6 +4,8 @@
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   align-items: center;
   background: linear-gradient(
@@ -28,26 +30,19 @@
         outline: none;
       }
     }
-
-    &_details {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
+    
     button {
-      width: 40%;
       @include buttonStyle;
     }
+  }
 
-    a {
-      text-decoration: none;
-      color: black;
-      font-size: 13px;
+  a {
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
 
-      &:hover {
-        text-decoration: underline;
-      }
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

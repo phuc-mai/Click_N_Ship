@@ -42,13 +42,13 @@ router.get("/", async (req, res) => {
     } else if (qCategory) {
       products = await Product.find({
         categories: {
-          $in: [qCategory]
-        }
+          $in: [qCategory],
+        },
       });
     } else {
-      products = await Product.find()
+      products = await Product.find();
     }
-    
+
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json(err);

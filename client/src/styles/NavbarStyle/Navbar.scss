@@ -20,9 +20,9 @@
     &_search {
       border: 1px solid $grey;
       border-radius: 10px;
-      padding: 0px 20px;
+      padding: 0px 10px;
       display: flex;
-      gap: 40px;
+      gap: 10px;
       align-items: center;
 
       input {
@@ -41,6 +41,16 @@
 
   &_left {
     display: flex;
-    gap: 30px;
+    align-items: center;
+    gap: 10px;
+
+    select {
+      padding: 5px 10px;
+      background-color: whitesmoke;
+      border: 1px solid black;
+      border-radius: 15px;
+      cursor: pointer;
+      outline: none;
+    }
   }
 }

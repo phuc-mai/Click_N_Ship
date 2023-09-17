@@ -8,6 +8,7 @@ import ProductDetails from "./pages/ProductDetails";
 import ProductList from "./pages/ProductList";
 import Cart from "./pages/Cart";
 import Success from "./pages/Success";
+import WishList from "./pages/WishList";
 
 function App() {
   const user = true
@@ -22,6 +23,7 @@ function App() {
         <Route path="/products/:category?" element={<ProductList />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<WishList />} />
         <Route path="/success" element={<Success />} />
       </Routes>
     </>

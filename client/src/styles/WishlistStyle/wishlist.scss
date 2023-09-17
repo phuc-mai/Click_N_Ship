@@ -1,0 +1,63 @@
+@import "../../variables/Variables.module.scss";
+
+.wishlist {
+  padding: 50px 70px;
+
+  h1 {
+    text-align: center;
+  }
+
+  &_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      @include buttonStyle;
+    }
+
+    &_right {
+      display: flex;
+      gap: 30px;
+
+      p:hover {
+        cursor: pointer;
+        color: $lightred;
+      }
+    }
+  }
+
+  &_bottom {
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    &_item {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+
+      img {
+        height: 250px;
+      }
+
+      &_info {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        &_details {
+          display: flex;
+          gap: 10px;
+        }
+      }
+    }
+  }
+}

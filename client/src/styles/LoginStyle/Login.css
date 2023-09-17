@@ -35,8 +35,7 @@
   flex-direction: column;
   gap: 15px;
 }
-.login_form button {
-  width: 40%;
+.login_form_details button {
   padding: 10px 15px;
   background-color: #ffbaba;
   border: none;
@@ -45,16 +44,24 @@
   cursor: pointer;
   transition: 0.3s ease;
 }
-.login_form button:hover {
+.login_form_details button:hover {
   background-color: #ff5252;
   color: white;
 }
-.login_form a {
+.login_form_details a {
   text-decoration: none;
   color: black;
   font-size: 13px;
   cursor: pointer;
 }
-.login_form a:hover {
+.login_form_details a:hover {
   text-decoration: underline;
+}
+.login_form_details_notice {
+  margin-bottom: 15px;
+}
+.login_form_details p {
+  color: black;
+  font-size: 13px;
+  font-weight: 600;
 }/*# sourceMappingURL=Login.css.map */

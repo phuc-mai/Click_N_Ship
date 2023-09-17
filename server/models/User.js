@@ -29,6 +29,14 @@ const UserSchema = new mongoose.Schema (
     isAdmin: {
       type: Boolean,
       default: false
+    },
+    wishlist: {
+      type: Array,
+      default: [],
+    },
+    orders: {
+      type: Array,
+      default: [],
     }
   },
   { timestamps: true }

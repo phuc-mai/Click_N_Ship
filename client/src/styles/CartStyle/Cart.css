@@ -44,6 +44,10 @@
   display: flex;
   gap: 60px;
 }
+.cart_bottom a {
+  text-decoration: none;
+  color: black;
+}
 @media (max-width: 1000px) {
   .cart_bottom {
     flex-direction: column;

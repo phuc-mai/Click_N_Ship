@@ -33,6 +33,11 @@
     display: flex;
     gap: 60px;
 
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    
     @include lg {
       flex-direction: column;
     }

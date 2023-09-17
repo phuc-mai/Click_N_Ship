@@ -1,0 +1,68 @@
+:export {
+  lightred: #ff5252;
+  red: #de0a26;
+  pink: #ffbaba;
+  lightpink: #fbf0f4;
+  grey: #555555;
+  lightblue: #edf3f5;
+}
+
+.wishlist {
+  padding: 50px 70px;
+}
+.wishlist h1 {
+  text-align: center;
+}
+.wishlist_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wishlist_top button {
+  padding: 10px 15px;
+  background-color: #ffbaba;
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.wishlist_top button:hover {
+  background-color: #ff5252;
+  color: white;
+}
+.wishlist_top_right {
+  display: flex;
+  gap: 30px;
+}
+.wishlist_top_right p:hover {
+  cursor: pointer;
+  color: #ff5252;
+}
+.wishlist_bottom {
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.wishlist_bottom a {
+  text-decoration: none;
+  color: black;
+}
+.wishlist_bottom_item {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.wishlist_bottom_item img {
+  height: 250px;
+}
+.wishlist_bottom_item_info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.wishlist_bottom_item_info_details {
+  display: flex;
+  gap: 10px;
+}/*# sourceMappingURL=wishlist.css.map */

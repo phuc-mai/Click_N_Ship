@@ -25,9 +25,9 @@
 .navbar_right_search {
   border: 1px solid #555555;
   border-radius: 10px;
-  padding: 0px 20px;
+  padding: 0px 10px;
   display: flex;
-  gap: 40px;
+  gap: 10px;
   align-items: center;
 }
 .navbar_right_search input {
@@ -43,5 +43,14 @@
 }
 .navbar_left {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  gap: 10px;
+}
+.navbar_left select {
+  padding: 5px 10px;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: none;
 }/*# sourceMappingURL=Navbar.css.map */

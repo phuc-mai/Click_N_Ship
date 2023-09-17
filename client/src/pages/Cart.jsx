@@ -12,15 +12,16 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 
-const STRIPE_KEY = process.env.REACT_STRIPE_CHECKOUT;
-
+const STRIPE_KEY = process.env.REACT_APP_STRIPE_CHECKOUT;
 const Cart = () => {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  const { stripeToken, setStripeToken } = useState(null);
+  const wishlist = useSelector((state) => state.user.currentUser.user.wishlist);
+
+  const [ stripeToken, setStripeToken ] = useState(null);
   
-  console.log(cart)
 
   const totalPrice = cart.products.reduce((total, item) => {
     return total + item.quantity * item.price;
@@ -33,18 +34,18 @@ const Cart = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await userRequest.post("/checkout/payment", {
+        const res = await userRequest.post("http://localhost:3001/checkout/payment", {
           tokenId: stripeToken.id,
-          amount: cart.total * 100,
+          amount: parseInt(totalPrice),
         });
-        navigate("/success", {
+        navigate("/success", {state:{
           stripeData: res.data,
           products: cart,
-        });
-      } catch {}
+        }});
+      } catch (err) {console.log(err)}
     };
-    stripeToken && cart.total >= 1 && makeRequest();
-  }, [stripeToken, cart.total]);
+    stripeToken && makeRequest();
+  }, [stripeToken]);
 
   return (
     <>
@@ -57,14 +58,14 @@ const Cart = () => {
           </Link>
           <div className="cart_top_right">
             <p>Shopping Bag ({cart.products?.length})</p>
-            {/* <p>Your Wishlist (0)</p> */} 
+            <p>Your Wishlist ({wishlist?.length})</p> 
           </div>
         </div>
 
         <div className="cart_bottom">
           <div className="cart_bottom_details">
             {cart.products?.map((item) => (
-              <>
+              <Link to={`/product/${item._id}`}>
                 <div className="cart_bottom_details_item">
                   <div className="cart_bottom_details_item_left">
                     <img src={`/assets/${item.img}`} alt="product" />
@@ -75,7 +76,7 @@ const Cart = () => {
                       </div>
                       <div className="cart_bottom_details_item_left_info_type">
                         <h4>ID:</h4>
-                        <p>{item.id}</p>
+                        <p>{item._id}</p>
                       </div>
                       <div style={{ backgroundColor: item.color }} />
                       <div className="cart_bottom_details_item_left_info_type">
@@ -88,7 +89,7 @@ const Cart = () => {
                   <div className="cart_bottom_details_item_right">
                     <div className="cart_bottom_details_item_right_quantity">
                       <RemoveCircleOutline
-                        onClick={() => dispatch(decreaseQty({ id: item.id }))}
+                        onClick={() => dispatch(decreaseQty({ id: item._id }))}
                         sx={{
                           fontSize: "35px",
                           cursor: "pointer",
@@ -97,7 +98,7 @@ const Cart = () => {
                       />
                       <p>{item.quantity}</p>
                       <AddCircleOutline
-                        onClick={() => dispatch(increaseQty({ id: item.id }))}
+                        onClick={() => dispatch(increaseQty({ id: item._id }))}
                         sx={{
                           fontSize: "35px",
                           cursor: "pointer",
@@ -105,13 +106,13 @@ const Cart = () => {
                         }}
                       />
                     </div>
-                    <button onClick={() => dispatch(removeFromCart({ id: item.id }))}>Remove</button>
+                    <button onClick={() => dispatch(removeFromCart({ id: item._id }))}>Remove</button>
                     <h2>$ {(item.price * item.quantity).toFixed(2)}</h2>
                   </div>
                 </div>
 
                 <hr />
-              </>
+              </Link>
             ))}
           </div>
 
@@ -139,8 +140,8 @@ const Cart = () => {
               image="/assets/logo.png"
               billingAddress
               shippingAddress
-              description={`Your total is $ ${cart.total}`}
-              amount={cart.total * 100}
+              description={`Your total is $ ${totalPrice}`}
+              amount={totalPrice * 100}
               stripeKey={STRIPE_KEY}
               token={onToken}
             >

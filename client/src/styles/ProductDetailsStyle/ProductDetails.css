@@ -59,6 +59,11 @@
   border-radius: 50%;
   margin: 0 7px;
   cursor: pointer;
+  border: 1px solid black;
+}
+.productPage_details_optimize_color .selected {
+  transform: scale(1.1);
+  box-shadow: 1px 2px 15px #000000;
 }
 .productPage_details_optimize_size {
   display: flex;

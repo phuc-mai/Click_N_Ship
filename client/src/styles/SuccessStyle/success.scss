@@ -1,0 +1,15 @@
+@import "../../variables/Variables.module.scss";
+@import "../breakpoints.scss";
+
+.success {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  button {
+    @include buttonStyle();
+  }
+}
